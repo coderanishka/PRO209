@@ -20,10 +20,6 @@ filePathLabel = None
 global soung_counter
 song_counter = 0
 
-for file in os.listdir('shared_files'):
-    filename = os.fsdecode(file)
-    listbox.insert(song_counter, filename)
-    song_counter = song_counter + 1
 
 def play():
     global song_selected
@@ -47,6 +43,12 @@ def stop():
     infoLabel.configure(text = '')
 
 def musicWindow():
+    global song_counter
+    global filePathLabel
+    global listbox
+    global infoLabel
+
+
     window = Tk()
     window.title('music Window')
     window.geometry("300x300")
@@ -57,6 +59,12 @@ def musicWindow():
 
     listbox = Listbox(window, height = 10, width = 39, activestyle = 'dotbox', bg = 'purple', borderwidth = 2, font = ('Calbiri', 10))
     listbox.place(x = 10, y = 10)
+
+    for file in os.listdir('shared_files'):
+        filename = os.fsdecode(file)
+        listbox.insert(song_counter, filename)
+        song_counter = song_counter + 1
+
 
     scrollbar1 = Scrollbar(listbox)
     scrollbar1.place(relheight = 1, relx = 1)
@@ -71,7 +79,7 @@ def musicWindow():
     Upload = Button(window, text = 'Upload', width = 10, bd = 1, bg = 'Skyblue', font = ('Calbiri', 10))
     Upload.place(x = 30, y = 250)
 
-    Download = Button(window, text = 'play', width = 10, bd = 1, bg = 'Skyblue', font = ('Calbiri', 10))
+    Download = Button(window, text = 'Download', width = 10, bd = 1, bg = 'Skyblue', font = ('Calbiri', 10))
     Download.place(x = 200, y = 250)
 
     infoLabel = Label(window, text = '', fg = 'blue', font = ('Calbiri', 8))
