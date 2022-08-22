@@ -3,8 +3,9 @@ from threading import Thread
 
 IP_ADDRESS = '127.0.0.1'
 PORT = 8050
-SERVER = NoneBUFFER_SIZE = 4096
-Clients = {}
+SERVER = None
+BUFFER_SIZE = 4096
+clients = {}
 
 def setup():
     print('\n\n\n\n\n\n IP Messenger\n')
